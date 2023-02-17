@@ -1,6 +1,6 @@
 # MoviesProject by Swati Khandare
-Movies Project is developed during SE 3rd semester using React, Nodejs, Express, MongoDB, Java and PostgreSQL
+Movies Project application is developed during SE 3rd semester using React, Nodejs, Express, MongoDB, Java and PostgreSQL
 
-Technical Specification Document contains the software and hardware requirement for the project.
+Technical Specification Document contains the software and hardware requirement for the application.
 
-Production document contains the installation steps and steps to execute the project.
+Production document contains the installation steps and steps to execute and test the application.
