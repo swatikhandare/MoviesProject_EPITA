@@ -1,0 +1,56 @@
+DROP DATABASE IF EXISTS moviesprojectdb.sql;
+DROP USER IF EXISTS moviesprojectdbuser;
+CREATE USER moviesprojectdbuser with password 'password';
+CREATE DATABASE moviesprojectdb with template=template0 owner=moviesprojectdbuser;
+\connect moviesprojectdb;
+alter default privileges grant all on tables to moviesprojectdbuser;
+
+CREATE TABLE role(
+                     role_name varchar(10) NOT NULL,
+                     PRIMARY KEY (role_name)
+);
+
+INSERT INTO role (role_name) VALUES ('admin');
+INSERT INTO role (role_name) VALUES ('user');
+
+CREATE TABLE contacts(
+                         contact_id serial PRIMARY KEY,
+                         first_name varchar(255),
+                         last_name varchar(355),
+                         date_of_birth DATE,
+                         gender varchar(6),
+                         contact_email varchar(150) NOT NULL,
+                         UNIQUE(contact_email)
+);
+
+CREATE TABLE users(
+                      user_id serial PRIMARY KEY,
+                      username varchar(45) UNIQUE,
+                      password text NOT NULL,
+                      "role" varchar(10) not null REFERENCES role (role_name),
+                      contact_id int not null REFERENCES contacts (contact_id)
+);
+
+CREATE TABLE movies(
+                       movie_id serial PRIMARY KEY,
+                       movie_title varchar(250) NOT NULL,
+                       added DATE NOT NULL,
+                       mongodb_movie_id varchar(150) NOT NULL
+);
+
+CREATE TABLE seenMovie(
+                          seenMovie_id serial PRIMARY KEY,
+                          user_id int REFERENCES users (user_id) ON UPDATE CASCADE ON DELETE CASCADE,
+                          movie_id int REFERENCES movies (movie_id) ON UPDATE CASCADE ON DELETE CASCADE,
+                          seenMovie_date DATE NOT NULL
+);
+
+CREATE TABLE address(
+                        address_id serial PRIMARY KEY,
+                        country varchar(45) NOT NULL,
+                        area varchar(45) NOT NULL,
+                        city varchar(45) NOT NULL,
+                        street varchar(150) NOT NULL,
+                        address_number varchar(45) NOT NULL,
+                        contact_id int REFERENCES contacts (contact_id)
+);
