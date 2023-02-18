@@ -9,4 +9,4 @@ Please follow the squence of the watching the application demonstration videos:
 
           1.Demonstration Video_1_MoviesProject_SwatiKhandare.mp4
 
-          2.Demonstration Video_2_MoviesProject_SwatiKhandare.mp2
+          2.Demonstration Video_2_MoviesProject_SwatiKhandare.mp4
